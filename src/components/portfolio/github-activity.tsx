@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { Github, Star, GitFork, ExternalLink } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { profile } from "@/data/portfolio";
 import { SectionHeading } from "./section-heading";
 import { Reveal } from "./motion-primitives";
