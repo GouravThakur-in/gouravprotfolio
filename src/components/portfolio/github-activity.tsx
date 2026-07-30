@@ -32,6 +32,21 @@ export function GithubActivity() {
     };
   }, []);
 
+  const languageMix = useMemo(() => {
+    const counts = new Map<string, number>();
+    repos.forEach((r) => {
+      if (r.language) counts.set(r.language, (counts.get(r.language) ?? 0) + 1);
+    });
+    const total = [...counts.values()].reduce((a, b) => a + b, 0);
+    if (!total) return [] as [string, number][];
+    return [...counts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([lang, n]) => [lang, Math.round((n / total) * 100)] as [string, number]);
+  }, [repos]);
+
+
+
   return (
     <section id="github" className="section-shell">
       <SectionHeading
