@@ -57,12 +57,33 @@ export function GithubActivity() {
             <p className="mb-4 font-mono text-xs tracking-widest text-muted-foreground uppercase">
               Top languages
             </p>
-            <img
-              src={`https://github-readme-stats.vercel.app/api/top-langs/?username=${profile.githubUser}&layout=compact&hide_border=true&bg_color=00000000&title_color=5ad4e6&text_color=b9c2cc`}
-              alt="Most used programming languages on GitHub"
-              loading="lazy"
-              className="w-full"
-            />
+            {languageMix.length > 0 ? (
+              <ul className="grid gap-3">
+                {languageMix.map(([lang, share], i) => (
+                  <li key={lang}>
+                    <div className="mb-1.5 flex items-center justify-between text-xs">
+                      <span>{lang}</span>
+                      <span className="font-mono text-muted-foreground">{share}%</span>
+                    </div>
+                    <div className="h-1.5 w-full overflow-hidden rounded-full bg-secondary">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${share}%` }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.9, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
+                        className="h-full rounded-full"
+                        style={{ background: "var(--gradient-aurora)" }}
+                      />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-sm text-muted-foreground">
+                Loading language mix from public repositories…
+              </p>
+            )}
+
           </div>
         </div>
       </Reveal>
