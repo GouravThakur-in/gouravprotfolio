@@ -14,25 +14,32 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
-          The page you're looking for doesn't exist or has been moved.
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background px-4">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute h-[30rem] w-[30rem] rounded-full opacity-25 blur-[120px]"
+        style={{ background: "var(--gradient-aurora)" }}
+      />
+      <div className="relative max-w-md text-center">
+        <h1 className="text-aurora font-display text-[7rem] leading-none font-semibold">404</h1>
+        <h2 className="mt-2 text-xl font-semibold text-foreground">Signal lost</h2>
+        <p className="mt-3 text-sm text-muted-foreground">
+          This page isn't part of the model. Let's get you back to the portfolio.
         </p>
-        <div className="mt-6">
+        <div className="mt-8">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground"
+            style={{ background: "var(--gradient-aurora)" }}
           >
-            Go home
+            Back to home
           </Link>
         </div>
       </div>
     </div>
   );
 }
+
 
 function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
