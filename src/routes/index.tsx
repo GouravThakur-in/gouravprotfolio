@@ -1,24 +1,73 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Navbar } from "@/components/portfolio/navbar";
+import { Hero } from "@/components/portfolio/hero";
+import { About } from "@/components/portfolio/about";
+import { Experience } from "@/components/portfolio/experience";
+import { Skills } from "@/components/portfolio/skills";
+import { Projects } from "@/components/portfolio/projects";
+import { GithubActivity } from "@/components/portfolio/github-activity";
+import { Education } from "@/components/portfolio/education";
+import { Contact } from "@/components/portfolio/contact";
+import { Footer } from "@/components/portfolio/footer";
+import { LoadingScreen } from "@/components/portfolio/loading-screen";
+import { profile } from "@/data/portfolio";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const title = "Gourav Thakur — AI & Machine Learning Engineer";
+const description =
+  "Portfolio of Gourav Thakur, AI & Machine Learning Engineer building end-to-end ML pipelines, deep learning models and FastAPI backends with Python, TensorFlow and Scikit-Learn.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "profile" },
+      { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "keywords",
+        content:
+          "AI Engineer, Machine Learning Engineer, Python Developer, FastAPI, TensorFlow, Scikit-Learn, Gourav Thakur",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: profile.name,
+          jobTitle: profile.role,
+          email: `mailto:${profile.email}`,
+          telephone: profile.phone,
+          url: profile.linkedin,
+          sameAs: [profile.github, profile.linkedin],
+          alumniOf: "Sardar Patel University, Mandi",
+          knowsAbout: ["Machine Learning", "Deep Learning", "NLP", "Python", "FastAPI"],
+        }),
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <LoadingScreen />
+      <Navbar />
+      <main>
+        <Hero />
+        <About />
+        <Experience />
+        <Skills />
+        <Projects />
+        <GithubActivity />
+        <Education />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
 }
