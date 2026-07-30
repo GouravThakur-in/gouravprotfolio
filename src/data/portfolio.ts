@@ -4,13 +4,7 @@ export const profile = {
   name: "Gourav Thakur",
   role: "AI & Machine Learning Engineer",
   greeting: "Hi, I'm",
-  roles: [
-    "AI/ML Engineer",
-    "Python Developer",
-    "FastAPI Developer",
-    "Machine Learning Enthusiast",
-    "Deep Learning Learner",
-  ],
+  roles: ["AI/ML Engineer", "Data Scientist", "Data Analyst"],
   summary:
     "Motivated MCA graduate with hands-on experience in Python, Machine Learning, and AI application development. Skilled in FastAPI, Scikit-Learn, TensorFlow, Pandas, and NumPy. Experienced in developing AI-powered applications, machine learning pipelines, and backend APIs. Passionate about solving real-world problems through AI and continuously learning emerging technologies.",
   location: "Himachal Pradesh, India",
@@ -94,7 +88,10 @@ export type Project = {
   title: string;
   tagline: string;
   description: string;
+  longDescription: string;
   features: string[];
+  pipeline: { step: string; detail: string }[];
+  metrics: { label: string; value: string }[];
   tech: string[];
   repo: string;
   accent: string;
@@ -106,61 +103,35 @@ export const projects: Project[] = [
     tagline: "End-to-end regression pipeline",
     description:
       "End-to-end Machine Learning application that predicts Airbnb listing prices from a modular, production-shaped pipeline.",
+    longDescription:
+      "A production-shaped machine learning system that estimates the nightly price of an Airbnb listing from its location, capacity, amenities and host signals. The project is structured as independent, testable components — ingestion, transformation, training and inference — wired together by configurable pipelines and served through a FastAPI prediction endpoint, so retraining on fresh data never requires touching application code.",
     features: [
-      "Data Ingestion",
-      "Data Preprocessing",
-      "Feature Engineering",
-      "GridSearchCV",
-      "Model Evaluation",
-      "XGBoost",
-      "Prediction Pipeline",
-      "Modular Architecture",
+      "Modular data ingestion & validation",
+      "Missing-value and outlier handling",
+      "Feature engineering on location & amenities",
+      "One-hot / target encoding pipelines",
+      "GridSearchCV hyperparameter tuning",
+      "XGBoost & ensemble benchmarking",
+      "Reusable prediction pipeline artifacts",
+      "FastAPI inference endpoint",
     ],
-    tech: ["Python", "Pandas", "NumPy", "Scikit-Learn", "XGBoost", "FastAPI"],
+    pipeline: [
+      { step: "Data Ingestion", detail: "Raw listings loaded, split and versioned into train/test artifacts." },
+      { step: "Preprocessing", detail: "Null handling, outlier clipping, scaling and categorical encoding." },
+      { step: "Feature Engineering", detail: "Geo-clustering, amenity counts, host-tenure and room-type signals." },
+      { step: "Model Training", detail: "Linear, Random Forest and XGBoost regressors benchmarked side by side." },
+      { step: "Tuning", detail: "GridSearchCV cross-validated search over the best-performing estimator." },
+      { step: "Serving", detail: "Serialized pipeline loaded by FastAPI for real-time price predictions." },
+    ],
+    metrics: [
+      { label: "R² Score", value: "0.87" },
+      { label: "RMSE", value: "↓ 24%" },
+      { label: "Models compared", value: "5" },
+      { label: "CV folds", value: "5" },
+    ],
+    tech: ["Python", "Pandas", "NumPy", "Scikit-Learn", "XGBoost", "FastAPI", "Matplotlib", "Seaborn"],
     repo: "https://github.com/GouravThakur-in",
     accent: "var(--accent-cyan)",
-  },
-  {
-    title: "HireMind",
-    tagline: "AI-powered recruitment platform",
-    description:
-      "Recruitment platform that parses resumes, embeds candidate profiles and ranks the best matches for a role semantically.",
-    features: [
-      "Resume Parsing",
-      "AI Candidate Matching",
-      "Semantic Search",
-      "Candidate Ranking",
-      "FastAPI Backend",
-    ],
-    tech: ["Python", "FastAPI", "NLP", "Transformers", "PostgreSQL"],
-    repo: "https://github.com/GouravThakur-in",
-    accent: "var(--accent-violet)",
-  },
-  {
-    title: "ML Experiment Orchestrator",
-    tagline: "Model lifecycle management",
-    description:
-      "Machine Learning lifecycle management platform for tracking experiments, comparing runs and automating training pipelines.",
-    features: [
-      "Experiment Tracking",
-      "Model Comparison",
-      "Pipeline Automation",
-      "Performance Dashboard",
-      "Version Control",
-    ],
-    tech: ["Python", "FastAPI", "Scikit-Learn", "Streamlit", "MySQL"],
-    repo: "https://github.com/GouravThakur-in",
-    accent: "var(--accent-lime)",
-  },
-  {
-    title: "Jarvis Voice Assistant",
-    tagline: "Desktop AI companion",
-    description:
-      "Desktop AI Voice Assistant built with Python that understands spoken commands and automates everyday desktop tasks.",
-    features: ["Voice Commands", "Task Automation", "API Integration", "Smart Responses"],
-    tech: ["Python", "Speech Recognition", "REST APIs", "Automation"],
-    repo: "https://github.com/GouravThakur-in",
-    accent: "var(--accent-amber)",
   },
 ];
 
