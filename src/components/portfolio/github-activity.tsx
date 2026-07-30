@@ -66,7 +66,9 @@ export function GithubActivity() {
               alt={`GitHub contribution chart for ${profile.name}`}
               loading="lazy"
               className="w-full"
+              style={{ filter: "invert(1) hue-rotate(180deg) saturate(1.2)" }}
             />
+
           </div>
           <div className="glass overflow-hidden rounded-3xl p-5">
             <p className="mb-4 font-mono text-xs tracking-widest text-muted-foreground uppercase">
