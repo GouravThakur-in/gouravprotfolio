@@ -1,14 +1,5 @@
 # Gourav's Portfolio
 
-Build me a premium, award-winning AI/ML Engineer portfolio website using the reference website below as design inspiration, but DO NOT copy it.
-
-Reference Website:
-https://majestic-scone-8250a8.netlify.app/
-
-Use the reference only for inspiration regarding layout, flow, and user experience. Create a completely unique design with modern UI/UX, original components, animations, colors, and interactions.
-
-The portfolio should feel like it belongs to an AI Engineer at OpenAI, Anthropic, Google DeepMind, NVIDIA, or Microsoft.
-
 ## Tech Stack
 - React + Vite
 - Tailwind CSS
@@ -58,10 +49,6 @@ Social Links:
 - GitHub
 - LinkedIn
 - Email
-
-Create an animated futuristic background using subtle particles, gradients, and glowing effects.
-
----
 
 ## About Me
 
@@ -179,45 +166,6 @@ Technologies:
 Python, Pandas, NumPy, Scikit-Learn, XGBoost, FastAPI
 
 ---
-
-### HireMind
-
-AI-powered recruitment platform.
-
-Features:
-- Resume Parsing
-- AI Candidate Matching
-- Semantic Search
-- Candidate Ranking
-- FastAPI Backend
-
----
-
-### ML Experiment Orchestrator
-
-Machine Learning lifecycle management platform.
-
-Features:
-- Experiment Tracking
-- Model Comparison
-- Pipeline Automation
-- Performance Dashboard
-- Version Control
-
----
-
-### Jarvis Voice Assistant
-
-Desktop AI Voice Assistant built with Python.
-
-Features:
-- Voice Commands
-- Task Automation
-- API Integration
-- Smart Responses
-
----
-
 ## Education
 
 Animated timeline.
@@ -271,36 +219,7 @@ Include:
 - Floating gradient blobs
 - Smooth scrolling
 - Elegant page transitions
-
-Animations should feel premium, smooth, and not distracting.
-
 ---
-
-## Additional Requirements
-
-- Do NOT use placeholder content where my information is available.
-- Use my actual resume details throughout the website.
-- Create reusable React components with a clean folder structure.
-- Store all portfolio data in a single configuration/data file for easy updates.
-- Include a loading screen and custom 404 page.
-- Add a "Featured Technologies" section with animated icons.
-- Add GitHub contribution stats, coding activity, and repository showcase.
-- Ensure every section has a unique visual identity while maintaining a consistent design language.
-- The final website should significantly surpass the reference website in UI, UX, responsiveness, animations, and professionalism while remaining original.
-- The portfolio should be polished enough to impress recruiters from top AI companies and stand out during internship and full-time hiring.
-
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://gouravprotfolio.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/e32c3d47-4fc1-4a00-a27b-f8e4ba90526d).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
 ## Development
 
 Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
