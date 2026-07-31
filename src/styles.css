@@ -164,6 +164,23 @@
   color: transparent;
 }
 
+@utility hover-instagram {
+  transition:
+    color 0.3s ease,
+    box-shadow 0.4s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    color: var(--brand-instagram-2);
+    border-color: color-mix(in oklab, var(--brand-instagram-2) 55%, transparent);
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--brand-instagram-2) 35%, transparent),
+      0 10px 30px -10px color-mix(in oklab, var(--brand-instagram-3) 70%, transparent);
+  }
+}
+
+
 @utility grid-noise {
   background-image:
     linear-gradient(to right, oklch(1 0 0 / 3.5%) 1px, transparent 1px),
