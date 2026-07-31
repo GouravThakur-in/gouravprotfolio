@@ -41,7 +41,17 @@ export function Contact() {
         await emailjs.send(
           serviceId,
           templateId,
-          { from_name: name, reply_to: email, message },
+          {
+            from_name: name,
+            name,
+            user_name: name,
+            reply_to: email,
+            email,
+            user_email: email,
+            message,
+            title: `Portfolio enquiry from ${name}`,
+            to_email: profile.email,
+          },
           { publicKey },
         );
         setStatus("sent");
