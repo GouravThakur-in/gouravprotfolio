@@ -209,10 +209,15 @@ function ProfilePhoto() {
           <img
             src={profilePhoto}
             alt="Portrait of Gourav Thakur, AI & Machine Learning Engineer"
-            width={1024}
-            height={1024}
-            className="size-full scale-105 object-cover transition-transform duration-700 hover:scale-110"
+            width={900}
+            height={900}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            sizes="(max-width: 640px) 20rem, (max-width: 1024px) 24rem, 28rem"
+            className="size-full scale-105 object-cover object-[50%_28%] transition-transform duration-700 hover:scale-110"
           />
+
           <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/15" />
         </div>
 
