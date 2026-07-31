@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { ArrowDown, Download, Mail, Sparkles } from "lucide-react";
-import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FiGithub, FiInstagram, FiLinkedin, FiMail } from "react-icons/fi";
 import { profile } from "@/data/portfolio";
 import { ParticleField, Blobs } from "./backdrop";
 import { MagneticButton } from "./magnetic-button";
