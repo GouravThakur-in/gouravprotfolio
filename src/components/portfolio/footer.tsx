@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowUp } from "lucide-react";
-import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FiGithub, FiInstagram, FiLinkedin, FiMail } from "react-icons/fi";
 import { profile } from "@/data/portfolio";
 
 export function Footer() {
