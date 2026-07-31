@@ -89,7 +89,17 @@
   );
   --shadow-glow: 0 0 0 1px oklch(1 0 0 / 8%), 0 24px 60px -24px oklch(0.83 0.13 196 / 35%);
   --shadow-card: 0 1px 0 0 oklch(1 0 0 / 6%) inset, 0 28px 70px -40px oklch(0 0 0 / 90%);
+  --brand-instagram-1: oklch(0.72 0.17 60);
+  --brand-instagram-2: oklch(0.62 0.24 5);
+  --brand-instagram-3: oklch(0.52 0.25 300);
+  --gradient-instagram: linear-gradient(
+    45deg,
+    var(--brand-instagram-1) 0%,
+    var(--brand-instagram-2) 55%,
+    var(--brand-instagram-3) 100%
+  );
 }
+
 
 @layer base {
   * {
@@ -153,6 +163,23 @@
   -webkit-background-clip: text;
   color: transparent;
 }
+
+@utility hover-instagram {
+  transition:
+    color 0.3s ease,
+    box-shadow 0.4s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    color: var(--brand-instagram-2);
+    border-color: color-mix(in oklab, var(--brand-instagram-2) 55%, transparent);
+    box-shadow:
+      0 0 0 1px color-mix(in oklab, var(--brand-instagram-2) 35%, transparent),
+      0 10px 30px -10px color-mix(in oklab, var(--brand-instagram-3) 70%, transparent);
+  }
+}
+
 
 @utility grid-noise {
   background-image:

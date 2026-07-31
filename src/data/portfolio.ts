@@ -15,6 +15,9 @@ export const profile = {
   github: "https://github.com/GouravThakur-in",
   githubLabel: "github.com/GouravThakur-in",
   githubUser: "GouravThakur-in",
+  instagram: "https://www.instagram.com/gourav_1hakur/",
+  instagramLabel: "@gourav_1hakur",
+
   resumeUrl: "/gourav-thakur-resume.pdf",
 };
 
