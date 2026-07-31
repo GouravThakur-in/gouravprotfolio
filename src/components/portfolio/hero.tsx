@@ -134,21 +134,25 @@ export function Hero() {
             className="mt-12 flex flex-wrap items-center gap-4"
           >
             {[
-              { href: profile.github, Icon: FiGithub, label: "GitHub" },
-              { href: profile.linkedin, Icon: FiLinkedin, label: "LinkedIn" },
-              { href: `mailto:${profile.email}`, Icon: FiMail, label: "Email" },
-            ].map(({ href, Icon, label }) => (
+              { href: profile.github, Icon: FiGithub, label: "GitHub", instagram: false },
+              { href: profile.linkedin, Icon: FiLinkedin, label: "LinkedIn", instagram: false },
+              { href: `mailto:${profile.email}`, Icon: FiMail, label: "Email", instagram: false },
+              { href: profile.instagram, Icon: FiInstagram, label: "Instagram", instagram: true },
+            ].map(({ href, Icon, label, instagram }) => (
               <a
                 key={label}
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel="noreferrer"
                 aria-label={label}
-                className="glass grid size-11 place-items-center rounded-full text-muted-foreground transition-all hover:-translate-y-1 hover:text-cyan"
+                className={`glass grid size-11 place-items-center rounded-full text-muted-foreground transition-all hover:-translate-y-1 ${
+                  instagram ? "hover-instagram" : "hover:text-cyan"
+                }`}
               >
                 <Icon className="size-4.5" />
               </a>
             ))}
+
             <span className="ml-2 hidden h-px w-16 bg-border sm:block" />
             <span className="font-mono text-xs text-muted-foreground">{profile.location}</span>
           </motion.div>
