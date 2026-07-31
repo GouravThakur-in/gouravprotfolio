@@ -79,18 +79,24 @@ export function Contact() {
 
       <div className="mt-14 grid gap-6 lg:grid-cols-[1fr_1.15fr]">
         <Reveal className="grid content-start gap-3">
-          {channels.map(({ Icon, label, value, href }) => (
+          {channels.map(({ Icon, label, value, href, instagram }) => (
             <motion.a
               key={label}
               href={href}
               target={href.startsWith("http") ? "_blank" : undefined}
               rel="noreferrer"
               whileHover={{ x: 6 }}
-              className="glass flex items-center gap-4 rounded-2xl p-4"
+              className={`glass flex items-center gap-4 rounded-2xl p-4 ${
+                instagram ? "hover-instagram" : ""
+              }`}
             >
-              <span className="glass grid size-10 shrink-0 place-items-center rounded-xl">
-                <Icon className="size-4 text-cyan" />
+              <span
+                className="glass grid size-10 shrink-0 place-items-center rounded-xl"
+                style={instagram ? { background: "var(--gradient-instagram)" } : undefined}
+              >
+                <Icon className={instagram ? "size-4 text-primary-foreground" : "size-4 text-cyan"} />
               </span>
+
               <span className="min-w-0">
                 <span className="block font-mono text-[0.68rem] tracking-widest text-muted-foreground uppercase">
                   {label}
