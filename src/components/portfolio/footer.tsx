@@ -25,21 +25,25 @@ export function Footer() {
 
         <div className="flex items-center gap-3">
           {[
-            { href: profile.github, Icon: FiGithub, label: "GitHub" },
-            { href: profile.linkedin, Icon: FiLinkedin, label: "LinkedIn" },
-            { href: `mailto:${profile.email}`, Icon: FiMail, label: "Email" },
-          ].map(({ href, Icon, label }) => (
+            { href: profile.github, Icon: FiGithub, label: "GitHub", instagram: false },
+            { href: profile.linkedin, Icon: FiLinkedin, label: "LinkedIn", instagram: false },
+            { href: `mailto:${profile.email}`, Icon: FiMail, label: "Email", instagram: false },
+            { href: profile.instagram, Icon: FiInstagram, label: "Instagram", instagram: true },
+          ].map(({ href, Icon, label, instagram }) => (
             <a
               key={label}
               href={href}
               target={href.startsWith("http") ? "_blank" : undefined}
               rel="noreferrer"
               aria-label={label}
-              className="glass grid size-10 place-items-center rounded-full text-muted-foreground transition-all hover:-translate-y-1 hover:text-cyan"
+              className={`glass grid size-10 place-items-center rounded-full text-muted-foreground transition-all hover:-translate-y-1 ${
+                instagram ? "hover-instagram" : "hover:text-cyan"
+              }`}
             >
               <Icon className="size-4" />
             </a>
           ))}
+
         </div>
 
         <p className="font-mono text-[0.7rem] text-muted-foreground">
