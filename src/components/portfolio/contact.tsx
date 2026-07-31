@@ -1,6 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "motion/react";
-import { Github, Linkedin, Mail, Phone, Send, Loader2, CheckCircle2 } from "lucide-react";
+import { Github, Instagram, Linkedin, Mail, Phone, Send, Loader2, CheckCircle2 } from "lucide-react";
 import emailjs from "@emailjs/browser";
 import { emailjsConfig, profile } from "@/data/portfolio";
 import { SectionHeading } from "./section-heading";
@@ -12,7 +12,15 @@ const channels = [
   { Icon: Mail, label: "Email", value: profile.email, href: `mailto:${profile.email}` },
   { Icon: Linkedin, label: "LinkedIn", value: profile.linkedinLabel, href: profile.linkedin },
   { Icon: Github, label: "GitHub", value: profile.githubLabel, href: profile.github },
+  {
+    Icon: Instagram,
+    label: "Instagram",
+    value: profile.instagramLabel,
+    href: profile.instagram,
+    instagram: true,
+  },
 ];
+
 
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
