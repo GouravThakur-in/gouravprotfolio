@@ -89,6 +89,7 @@ export const skillGroups = [
 
 export type Project = {
   title: string;
+  category: string;
   tagline: string;
   description: string;
   longDescription: string;
@@ -97,12 +98,14 @@ export type Project = {
   metrics: { label: string; value: string }[];
   tech: string[];
   repo: string;
+  kaggle?: string;
   accent: string;
 };
 
 export const projects: Project[] = [
   {
     title: "Airbnb Price Prediction",
+    category: "Machine Learning / Regression",
     tagline: "End-to-end regression pipeline",
     description:
       "End-to-end Machine Learning application that predicts Airbnb listing prices from a modular, production-shaped pipeline.",
@@ -136,7 +139,57 @@ export const projects: Project[] = [
     repo: "https://github.com/GouravThakur-in",
     accent: "var(--accent-cyan)",
   },
+  {
+    title: "Skin Disease Classification",
+    category: "Deep Learning / Computer Vision",
+    tagline: "Transfer learning on HAM10000",
+    description:
+      "Deep learning image classifier for skin lesions built on a pretrained MobileNetV2 backbone.",
+    longDescription:
+      "A deep learning project for skin lesion image classification using transfer learning with a pretrained MobileNetV2 architecture on the HAM10000 dataset. It covers image preprocessing, data augmentation, optimizer comparison, full model evaluation with confusion matrix and ROC curves, prediction visualisation, and a Gradio interface for interactive inference.",
+    features: [
+      "HAM10000 dermatoscopic dataset",
+      "Image preprocessing & resizing",
+      "Data augmentation pipeline",
+      "MobileNetV2 transfer learning",
+      "Optimizer comparison (Adam / SGD / RMSprop)",
+      "Confusion matrix & ROC curve analysis",
+      "Prediction visualisation grid",
+      "Gradio interactive interface",
+    ],
+    pipeline: [
+      { step: "Data Preparation", detail: "HAM10000 metadata parsed, class balance inspected and splits created." },
+      { step: "Preprocessing", detail: "Lesion images resized, normalised and encoded into batched tensors." },
+      { step: "Augmentation", detail: "Flips, rotations and zoom applied to reduce overfitting on rare classes." },
+      { step: "Transfer Learning", detail: "MobileNetV2 base frozen, custom classification head trained on top." },
+      { step: "Evaluation", detail: "Accuracy, confusion matrix and per-class ROC/AUC compared across optimizers." },
+      { step: "Deployment", detail: "Best model wrapped in a Gradio app for real-time lesion predictions." },
+    ],
+    metrics: [
+      { label: "Classes", value: "7" },
+      { label: "Images", value: "10k+" },
+      { label: "Backbone", value: "MobileNetV2" },
+      { label: "Optimizers", value: "3" },
+    ],
+    tech: [
+      "Python",
+      "TensorFlow",
+      "Keras",
+      "MobileNetV2",
+      "NumPy",
+      "Pandas",
+      "Matplotlib",
+      "Seaborn",
+      "Scikit-Learn",
+      "Gradio",
+      "Pillow",
+    ],
+    repo: "https://github.com/GouravThakur-in/skin-disease-classification",
+    kaggle: "https://www.kaggle.com/code/tgourav311951/final-year-project",
+    accent: "var(--accent-violet)",
+  },
 ];
+
 
 export const education = [
   {
