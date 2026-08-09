@@ -194,15 +194,6 @@ function ProfilePhoto() {
           style={{ background: "var(--gradient-aurora)" }}
         />
 
-        {/* dark radial backdrop for depth */}
-        <div
-          className="absolute -inset-4 rounded-full"
-          style={{
-            background:
-              "radial-gradient(circle at 50% 40%, oklch(0.22 0.02 265 / 0.9), oklch(0.08 0.01 265 / 0.98) 70%)",
-          }}
-        />
-
         {/* premium soft shadow */}
         <div className="absolute inset-x-8 bottom-1 h-12 rounded-full bg-black/70 blur-3xl" />
 
@@ -219,11 +210,11 @@ function ProfilePhoto() {
           }}
         />
 
-        {/* rotating gradient ring (thinner) */}
+        {/* rotating gradient ring */}
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 rounded-full p-[1.6px]"
+          className="absolute inset-0 rounded-full p-[2px]"
           style={{ background: "var(--gradient-aurora)" }}
         >
           <div className="size-full rounded-full bg-background/80" />
@@ -240,30 +231,28 @@ function ProfilePhoto() {
             fetchPriority="high"
             decoding="async"
             sizes="(max-width: 640px) 20rem, (max-width: 1024px) 24rem, 28rem"
-            className="size-full scale-[0.94] object-cover object-[52%_24%] transition-transform duration-700 ease-out group-hover:scale-[1.0]"
+            className="size-full scale-[0.94] object-cover object-[52%_24%] transition-transform duration-700 ease-out group-hover:scale-[1.06]"
           />
 
           <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/15" />
         </div>
-      </motion.div>
 
-      {/* floating chips — outside the portrait */}
-      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        {/* floating chips */}
         <motion.span
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="glass rounded-full px-3 py-1.5 font-mono text-[0.68rem] text-muted-foreground"
+          className="glass absolute -left-4 top-10 rounded-full px-3 py-1.5 font-mono text-[0.68rem] text-muted-foreground"
         >
           Python · FastAPI
         </motion.span>
         <motion.span
           animate={{ y: [0, -6, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="glass rounded-full px-3 py-1.5 font-mono text-[0.68rem] text-muted-foreground"
+          className="glass absolute -right-2 bottom-12 rounded-full px-3 py-1.5 font-mono text-[0.68rem] text-muted-foreground"
         >
           TensorFlow · ML
         </motion.span>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
