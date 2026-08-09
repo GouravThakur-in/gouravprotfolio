@@ -194,34 +194,43 @@ function ProfilePhoto() {
           style={{ background: "var(--gradient-aurora)" }}
         />
 
+        {/* dark radial backdrop for depth */}
+        <div
+          className="absolute -inset-4 rounded-full"
+          style={{
+            background:
+              "radial-gradient(circle at 50% 40%, oklch(0.22 0.02 265 / 0.9), oklch(0.08 0.01 265 / 0.98) 70%)",
+          }}
+        />
+
         {/* premium soft shadow */}
-        <div className="absolute inset-x-6 bottom-2 h-10 rounded-full bg-black/60 blur-2xl" />
+        <div className="absolute inset-x-8 bottom-1 h-12 rounded-full bg-black/70 blur-3xl" />
 
         {/* animated blue/violet ring */}
         <motion.div
           animate={{ rotate: -360 }}
           transition={{ duration: 26, repeat: Infinity, ease: "linear" }}
-          className="absolute -inset-1 rounded-full opacity-70 blur-[2px]"
+          className="absolute -inset-1 rounded-full opacity-60 blur-[2px]"
           style={{
             background:
               "conic-gradient(from 0deg, transparent 0%, var(--accent-cyan) 22%, var(--accent-violet) 48%, transparent 70%)",
-            maskImage: "radial-gradient(circle, transparent 62%, black 66%)",
-            WebkitMaskImage: "radial-gradient(circle, transparent 62%, black 66%)",
+            maskImage: "radial-gradient(circle, transparent 64%, black 67%)",
+            WebkitMaskImage: "radial-gradient(circle, transparent 64%, black 67%)",
           }}
         />
 
-        {/* rotating gradient ring */}
+        {/* rotating gradient ring (thinner) */}
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 rounded-full p-[2px]"
+          className="absolute inset-0 rounded-full p-[1.6px]"
           style={{ background: "var(--gradient-aurora)" }}
         >
           <div className="size-full rounded-full bg-background/80" />
         </motion.div>
 
         {/* glass frame + image */}
-        <div className="glass group absolute inset-[10px] overflow-hidden rounded-full border border-white/10 shadow-2xl">
+        <div className="glass group absolute inset-[10px] overflow-hidden rounded-full border border-white/10 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.9)]">
           <img
             src={profilePhoto}
             alt="Portrait of Gourav Thakur, AI & Machine Learning Engineer"
@@ -231,29 +240,31 @@ function ProfilePhoto() {
             fetchPriority="high"
             decoding="async"
             sizes="(max-width: 640px) 20rem, (max-width: 1024px) 24rem, 28rem"
-            className="size-full scale-100 object-cover object-[52%_32%] transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+            className="size-full scale-[0.94] object-cover object-[52%_24%] transition-transform duration-700 ease-out group-hover:scale-[1.0]"
           />
 
           <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/15" />
         </div>
+      </motion.div>
 
-
-        {/* floating chips */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
+      {/* floating chips — outside the portrait */}
+      <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <motion.span
+          animate={{ y: [0, 6, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="glass absolute -left-2 top-8 rounded-full px-3 py-1.5 font-mono text-[0.68rem] text-muted-foreground sm:-left-6"
+          className="glass rounded-full px-3 py-1.5 font-mono text-[0.68rem] text-muted-foreground"
         >
           Python · FastAPI
-        </motion.div>
-        <motion.div
-          animate={{ y: [0, -12, 0] }}
+        </motion.span>
+        <motion.span
+          animate={{ y: [0, -6, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="glass absolute -right-2 bottom-10 rounded-full px-3 py-1.5 font-mono text-[0.68rem] text-muted-foreground sm:-right-6"
+          className="glass rounded-full px-3 py-1.5 font-mono text-[0.68rem] text-muted-foreground"
         >
           TensorFlow · ML
-        </motion.div>
-      </motion.div>
+        </motion.span>
+      </div>
     </motion.div>
   );
 }
+
