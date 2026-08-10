@@ -1,9 +1,11 @@
 import { motion } from "motion/react";
 import { ArrowUpRight, Github } from "lucide-react";
-import { projects } from "@/data/portfolio";
+import { SiKaggle } from "react-icons/si";
+import { projects, skinDiseaseProject } from "@/data/portfolio";
 import { SectionHeading } from "./section-heading";
 import { Reveal } from "./motion-primitives";
 import projectImage from "@/assets/project-airbnb.jpg";
+import skinDiseaseAsset from "@/assets/skin-disease.webp.asset.json";
 
 export function Projects() {
   const project = projects[0];
@@ -13,7 +15,7 @@ export function Projects() {
       <SectionHeading
         eyebrow="Projects"
         title="Systems, not notebooks."
-        description="A featured end-to-end machine learning application — data in, decisions out."
+        description="End-to-end machine learning applications — data in, decisions out."
       />
 
       <Reveal>
@@ -123,6 +125,68 @@ export function Projects() {
                   </li>
                 ))}
               </ol>
+            </div>
+          </div>
+        </motion.article>
+      </Reveal>
+
+      <Reveal delay={0.1}>
+        <motion.article
+          whileHover={{ y: -6 }}
+          transition={{ type: "spring", stiffness: 260, damping: 24 }}
+          className="glass group relative mt-8 overflow-hidden rounded-[2rem] transition-shadow duration-500 hover:shadow-[var(--shadow-glow)]"
+        >
+          <div className="relative">
+            <img
+              src={skinDiseaseAsset.url}
+              alt="Illustration of a person with a skin condition on their arms, used for the skin disease classification project"
+              loading="lazy"
+              className="h-56 w-full object-cover object-left transition-transform duration-[1200ms] group-hover:scale-105 sm:h-72 lg:h-80"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/70 to-background/20" />
+            <div className="absolute inset-0 flex flex-col justify-end gap-2 p-6 sm:p-8">
+              <p className="font-mono text-xs tracking-widest text-foreground/70 uppercase">
+                02 — {skinDiseaseProject.category}
+              </p>
+              <h3 className="text-2xl font-semibold sm:text-4xl">
+                {skinDiseaseProject.title}
+              </h3>
+            </div>
+          </div>
+
+          <div className="p-6 sm:p-8">
+            <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground">
+              {skinDiseaseProject.description}
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              {skinDiseaseProject.tech.map((t) => (
+                <span
+                  key={t}
+                  className="rounded-full border border-border px-2.5 py-1 font-mono text-[0.68rem] text-muted-foreground transition-colors hover:border-violet hover:text-violet"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a
+                href={skinDiseaseProject.kaggle}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-cyan hover:text-cyan"
+              >
+                <SiKaggle className="size-4" /> View on Kaggle
+              </a>
+              <a
+                href={skinDiseaseProject.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-violet hover:text-violet"
+              >
+                <Github className="size-4" /> View on GitHub
+              </a>
             </div>
           </div>
         </motion.article>
