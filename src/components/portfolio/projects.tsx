@@ -1,9 +1,11 @@
 import { motion } from "motion/react";
 import { ArrowUpRight, Github } from "lucide-react";
-import { projects } from "@/data/portfolio";
+import { SiKaggle } from "react-icons/si";
+import { projects, skinDiseaseProject } from "@/data/portfolio";
 import { SectionHeading } from "./section-heading";
 import { Reveal } from "./motion-primitives";
 import projectImage from "@/assets/project-airbnb.jpg";
+import skinDiseaseAsset from "@/assets/skin-disease.webp.asset.json";
 
 export function Projects() {
   const project = projects[0];

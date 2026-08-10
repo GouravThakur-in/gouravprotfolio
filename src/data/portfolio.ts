@@ -138,6 +138,25 @@ export const projects: Project[] = [
   },
 ];
 
+export const skinDiseaseProject = {
+  title: "Skin Disease Classification",
+  category: "Machine Learning / Deep Learning",
+  description:
+    "An AI-based skin disease classification project that uses deep learning and image processing techniques to classify different types of skin diseases from images. The project includes image preprocessing, exploratory analysis, model training, evaluation, and prediction.",
+  tech: [
+    "Python",
+    "TensorFlow",
+    "Keras",
+    "CNN",
+    "NumPy",
+    "Pandas",
+    "Scikit-learn",
+    "Matplotlib",
+  ],
+  kaggle: "https://www.kaggle.com/",
+  repo: "https://github.com/GouravThakur-in",
+};
+
 export const education = [
   {
     degree: "Master of Computer Applications",
