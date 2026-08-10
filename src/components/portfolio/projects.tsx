@@ -15,7 +15,7 @@ export function Projects() {
       <SectionHeading
         eyebrow="Projects"
         title="Systems, not notebooks."
-        description="A featured end-to-end machine learning application — data in, decisions out."
+        description="End-to-end machine learning applications — data in, decisions out."
       />
 
       <Reveal>
