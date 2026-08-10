@@ -195,18 +195,18 @@ function ProfilePhoto() {
         />
 
         {/* premium soft shadow */}
-        <div className="absolute inset-x-8 bottom-1 h-12 rounded-full bg-black/70 blur-3xl" />
+        <div className="absolute inset-x-6 bottom-2 h-10 rounded-full bg-black/60 blur-2xl" />
 
         {/* animated blue/violet ring */}
         <motion.div
           animate={{ rotate: -360 }}
           transition={{ duration: 26, repeat: Infinity, ease: "linear" }}
-          className="absolute -inset-1 rounded-full opacity-60 blur-[2px]"
+          className="absolute -inset-1 rounded-full opacity-70 blur-[2px]"
           style={{
             background:
               "conic-gradient(from 0deg, transparent 0%, var(--accent-cyan) 22%, var(--accent-violet) 48%, transparent 70%)",
-            maskImage: "radial-gradient(circle, transparent 64%, black 67%)",
-            WebkitMaskImage: "radial-gradient(circle, transparent 64%, black 67%)",
+            maskImage: "radial-gradient(circle, transparent 62%, black 66%)",
+            WebkitMaskImage: "radial-gradient(circle, transparent 62%, black 66%)",
           }}
         />
 
@@ -221,7 +221,7 @@ function ProfilePhoto() {
         </motion.div>
 
         {/* glass frame + image */}
-        <div className="glass group absolute inset-[10px] overflow-hidden rounded-full border border-white/10 shadow-[0_30px_60px_-20px_rgba(0,0,0,0.9)]">
+        <div className="glass group absolute inset-[10px] overflow-hidden rounded-full border border-white/10 shadow-2xl">
           <img
             src={profilePhoto}
             alt="Portrait of Gourav Thakur, AI & Machine Learning Engineer"
@@ -231,29 +231,29 @@ function ProfilePhoto() {
             fetchPriority="high"
             decoding="async"
             sizes="(max-width: 640px) 20rem, (max-width: 1024px) 24rem, 28rem"
-            className="size-full scale-[0.94] object-cover object-[52%_24%] transition-transform duration-700 ease-out group-hover:scale-[1.06]"
+            className="size-full scale-100 object-cover object-[52%_32%] transition-transform duration-700 ease-out group-hover:scale-[1.06]"
           />
 
           <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/15" />
         </div>
 
+
         {/* floating chips */}
-        <motion.span
-          animate={{ y: [0, 6, 0] }}
+        <motion.div
+          animate={{ y: [0, 10, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="glass absolute -left-4 top-10 rounded-full px-3 py-1.5 font-mono text-[0.68rem] text-muted-foreground"
+          className="glass absolute -left-2 top-8 rounded-full px-3 py-1.5 font-mono text-[0.68rem] text-muted-foreground sm:-left-6"
         >
           Python · FastAPI
-        </motion.span>
-        <motion.span
-          animate={{ y: [0, -6, 0] }}
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, -12, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="glass absolute -right-2 bottom-12 rounded-full px-3 py-1.5 font-mono text-[0.68rem] text-muted-foreground"
+          className="glass absolute -right-2 bottom-10 rounded-full px-3 py-1.5 font-mono text-[0.68rem] text-muted-foreground sm:-right-6"
         >
           TensorFlow · ML
-        </motion.span>
+        </motion.div>
       </motion.div>
     </motion.div>
   );
 }
-
