@@ -1,3 +1,5 @@
+import resumeAsset from "@/assets/Gourav_Thakur_Resume.pdf.asset.json";
+
 export const profile = {
   firstName: "Gourav",
   lastName: "Thakur",
@@ -18,7 +20,7 @@ export const profile = {
   instagram: "https://www.instagram.com/gourav_1hakur/",
   instagramLabel: "@gourav_1hakur",
 
-  resumeUrl: "/gourav-thakur-resume.pdf",
+  resumeUrl: resumeAsset.url,
 };
 
 export const stats = [
