@@ -142,8 +142,8 @@ export function Hero() {
               <a
                 key={label}
                 href={href}
-                target={href.startsWith("http") ? "_blank" : undefined}
-                rel="noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={label}
                 className={`glass grid size-11 place-items-center rounded-full text-muted-foreground transition-all hover:-translate-y-1 ${
                   instagram ? "hover-instagram" : "hover:text-cyan"
