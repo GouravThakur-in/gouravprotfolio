@@ -93,8 +93,8 @@ export function Contact() {
             <motion.a
               key={label}
               href={href}
-              target={href.startsWith("http") ? "_blank" : undefined}
-              rel="noreferrer"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ x: 6 }}
               className={`glass flex items-center gap-4 rounded-2xl p-4 ${
                 instagram ? "hover-instagram" : ""
