@@ -20,7 +20,7 @@ export const profile = {
   instagram: "https://www.instagram.com/gourav_1hakur/",
   instagramLabel: "@gourav_1hakur",
 
-  resumeUrl: "/gourav-thakur-resume.pdf",
+  resumeUrl: resumeAsset.url,
 };
 
 export const stats = [
