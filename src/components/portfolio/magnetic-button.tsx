@@ -7,7 +7,7 @@ type Props = {
   className?: string;
   style?: CSSProperties;
   href?: string;
-  download?: boolean;
+  download?: boolean | string;
   type?: "button" | "submit";
   disabled?: boolean;
   onClick?: () => void;
