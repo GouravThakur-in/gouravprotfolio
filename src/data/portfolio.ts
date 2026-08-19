@@ -1,3 +1,5 @@
+import resumeAsset from "@/assets/Gourav_Thakur_Resume.pdf.asset.json";
+
 export const profile = {
   firstName: "Gourav",
   lastName: "Thakur",
