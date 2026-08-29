@@ -157,7 +157,7 @@ export function Projects() {
       <Reveal>
         <DetailedProjectCard
           project={emotionAIProject}
-          image={emotionImage}
+          image={emotionImage.url}
           imageAlt="EmotionAI deep learning text emotion classification abstract neural network visualisation"
           index={0}
         />
