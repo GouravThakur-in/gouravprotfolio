@@ -99,6 +99,7 @@ export type Project = {
   metrics: { label: string; value: string }[];
   tech: string[];
   repo: string;
+  liveDemo?: string;
   accent: string;
 };
 
