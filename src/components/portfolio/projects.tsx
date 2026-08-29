@@ -6,7 +6,7 @@ import type { Project } from "@/data/portfolio";
 import { SectionHeading } from "./section-heading";
 import { Reveal } from "./motion-primitives";
 import airbnbImage from "@/assets/project-airbnb.jpg";
-import emotionImage from "@/assets/project-emotionai.jpg";
+import emotionImage from "@/assets/project-emotionai.png.asset.json";
 import skinDiseaseAsset from "@/assets/skin-disease.webp.asset.json";
 
 function DetailedProjectCard({
@@ -157,7 +157,7 @@ export function Projects() {
       <Reveal>
         <DetailedProjectCard
           project={emotionAIProject}
-          image={emotionImage}
+          image={emotionImage.url}
           imageAlt="EmotionAI deep learning text emotion classification abstract neural network visualisation"
           index={0}
         />
