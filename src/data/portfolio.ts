@@ -99,6 +99,7 @@ export type Project = {
   metrics: { label: string; value: string }[];
   tech: string[];
   repo: string;
+  liveDemo?: string;
   accent: string;
 };
 
@@ -136,9 +137,62 @@ export const projects: Project[] = [
     ],
     tech: ["Python", "Pandas", "NumPy", "Scikit-Learn", "XGBoost", "FastAPI", "Matplotlib", "Seaborn"],
     repo: "https://github.com/GouravThakur-in",
-    accent: "var(--accent-cyan)",
+  accent: "var(--accent-cyan)",
   },
 ];
+
+export const emotionAIProject: Project = {
+  title: "EmotionAI",
+  tagline: "Deep Learning Multi-Class Emotion Classifier",
+  description:
+    "Built an end-to-end deep learning based text emotion classification system that classifies user input into six emotions: joy, sadness, anger, fear, love, and surprise.",
+  longDescription:
+    "An end-to-end NLP system that detects emotion from raw text using deep learning. The pipeline loads a 20k+ sample Hugging Face dataset, cleans and tokenizes the text, handles class imbalance, and benchmarks RNN, LSTM, GRU and BiGRU architectures. The best BiGRU model reached 92.25% test accuracy. The trained model is served through a FastAPI inference API and consumed by a React frontend for real-time emotion prediction.",
+  features: [
+    "Hugging Face dataset ingestion (20k+ samples)",
+    "EDA, text cleaning and preprocessing",
+    "Tokenization and sequence padding",
+    "Class imbalance handling",
+    "RNN, LSTM, GRU and BiGRU benchmarking",
+    "Confusion-matrix based model comparison",
+    "FastAPI inference endpoint",
+    "React frontend for real-time prediction",
+  ],
+  pipeline: [
+    { step: "Dataset & EDA", detail: "Loaded 20k+ text samples, explored class distribution and cleaned noise." },
+    { step: "Text Preprocessing", detail: "Tokenized text, padded sequences and prepared embedding-ready inputs." },
+    { step: "Model Benchmarking", detail: "Trained and compared RNN, LSTM, GRU and BiGRU architectures." },
+    { step: "Imbalance Handling", detail: "Balanced classes during training to improve minority-emotion recall." },
+    { step: "Evaluation", detail: "Compared accuracy, loss and confusion matrices to select the best model." },
+    { step: "Serving", detail: "Deployed the BiGRU model behind a FastAPI endpoint for live inference." },
+    { step: "Frontend", detail: "Built a React UI that calls the API and displays predicted emotion in real time." },
+  ],
+  metrics: [
+    { label: "Test Accuracy", value: "92.25%" },
+    { label: "Text Samples", value: "20k+" },
+    { label: "Architectures", value: "4" },
+    { label: "Deployment", value: "FastAPI + React" },
+  ],
+  tech: [
+    "Python",
+    "TensorFlow",
+    "Keras",
+    "NLP",
+    "RNN",
+    "LSTM",
+    "GRU",
+    "BiGRU",
+    "Hugging Face",
+    "Pandas",
+    "NumPy",
+    "Scikit-learn",
+    "FastAPI",
+    "React",
+  ],
+  repo: "https://github.com/GouravThakur-in/emotiq",
+  liveDemo: "https://emotiq-7pen.onrender.com",
+  accent: "var(--accent-violet)",
+};
 
 export const skinDiseaseProject = {
   title: "Skin Disease Classification",
