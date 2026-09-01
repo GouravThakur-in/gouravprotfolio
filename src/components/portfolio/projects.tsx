@@ -14,13 +14,16 @@ function DetailedProjectCard({
   image,
   imageAlt,
   index,
+  variant = "overlay",
 }: {
   project: Project;
   image: string;
   imageAlt: string;
   index: number;
+  variant?: "overlay" | "thumbnail";
 }) {
   const numberLabel = String(index + 1).padStart(2, "0");
+  const isThumbnail = variant === "thumbnail";
 
   return (
     <motion.article
@@ -28,14 +31,22 @@ function DetailedProjectCard({
       transition={{ type: "spring", stiffness: 260, damping: 24 }}
       className="glass group relative mt-14 overflow-hidden rounded-[2rem]"
     >
-      <div className="relative h-56 overflow-hidden border-b border-border sm:h-72 lg:h-80">
+      <div
+        className={`relative overflow-hidden border-b border-border ${
+          isThumbnail ? "h-60 rounded-t-[2rem] sm:h-80 lg:h-96" : "h-56 sm:h-72 lg:h-80"
+        }`}
+      >
         <img
           src={image}
           alt={imageAlt}
           loading="lazy"
           width={1600}
           height={900}
-          className="size-full object-cover opacity-70 transition-transform duration-[1200ms] group-hover:scale-110"
+          className={`size-full object-cover object-center transition-transform duration-[1400ms] ease-out ${
+            isThumbnail
+              ? "opacity-90 group-hover:scale-105"
+              : "opacity-70 group-hover:scale-110"
+          }`}
         />
         <div
           className="pointer-events-none absolute inset-0 opacity-70"
@@ -44,19 +55,32 @@ function DetailedProjectCard({
           }}
         />
         <div className="grid-noise pointer-events-none absolute inset-0 opacity-50" />
-        <div className="absolute inset-0 flex items-end justify-between gap-4 p-6 sm:p-8">
-          <div className="min-w-0">
-            <p className="font-mono text-xs tracking-widest text-foreground/70 uppercase">
-              {numberLabel} — {project.tagline}
-            </p>
-            <h3 className="mt-1 text-2xl font-semibold sm:text-4xl">{project.title}</h3>
+        {!isThumbnail && (
+          <div className="absolute inset-0 flex items-end justify-between gap-4 p-6 sm:p-8">
+            <div className="min-w-0">
+              <p className="font-mono text-xs tracking-widest text-foreground/70 uppercase">
+                {numberLabel} — {project.tagline}
+              </p>
+              <h3 className="mt-1 text-2xl font-semibold sm:text-4xl">{project.title}</h3>
+            </div>
+            <ArrowUpRight className="size-7 shrink-0 -translate-x-2 translate-y-2 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100" />
           </div>
-          <ArrowUpRight className="size-7 shrink-0 -translate-x-2 translate-y-2 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100" />
-        </div>
+        )}
       </div>
 
       <div className="grid gap-10 p-6 sm:p-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
         <div className="min-w-0">
+          {isThumbnail && (
+            <div className="mb-6 flex items-end justify-between gap-4">
+              <div className="min-w-0">
+                <p className="font-mono text-xs tracking-widest text-foreground/70 uppercase">
+                  {numberLabel} — {project.tagline}
+                </p>
+                <h3 className="mt-1 text-2xl font-semibold sm:text-4xl">{project.title}</h3>
+              </div>
+              <ArrowUpRight className="size-7 shrink-0 -translate-x-2 translate-y-2 opacity-0 transition-all duration-500 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100" />
+            </div>
+          )}
           <p className="text-sm leading-relaxed text-muted-foreground">{project.longDescription}</p>
 
           <h4 className="mt-8 font-mono text-xs tracking-widest text-muted-foreground uppercase">
@@ -158,8 +182,9 @@ export function Projects() {
         <DetailedProjectCard
           project={emotionAIProject}
           image={emotionImage.url}
-          imageAlt="EmotionAI deep learning text emotion classification abstract neural network visualisation"
+          imageAlt="Collage of facial expressions showing the six emotions classified by EmotionAI"
           index={0}
+          variant="thumbnail"
         />
       </Reveal>
 
