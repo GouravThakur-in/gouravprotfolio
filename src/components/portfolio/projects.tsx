@@ -182,8 +182,9 @@ export function Projects() {
         <DetailedProjectCard
           project={emotionAIProject}
           image={emotionImage.url}
-          imageAlt="EmotionAI deep learning text emotion classification abstract neural network visualisation"
+          imageAlt="Collage of facial expressions showing the six emotions classified by EmotionAI"
           index={0}
+          variant="thumbnail"
         />
       </Reveal>
 
