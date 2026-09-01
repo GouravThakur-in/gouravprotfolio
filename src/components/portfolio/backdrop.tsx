@@ -43,6 +43,7 @@ export function ParticleField() {
     };
 
     const draw = () => {
+      const light = document.documentElement.classList.contains("light");
       ctx.clearRect(0, 0, w, h);
       for (const p of points) {
         if (!reduce) {
@@ -53,7 +54,7 @@ export function ParticleField() {
         if (p.y < 0 || p.y > h) p.vy *= -1;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = "rgba(150, 230, 245, 0.55)";
+        ctx.fillStyle = light ? "rgba(40, 110, 140, 0.35)" : "rgba(150, 230, 245, 0.55)";
         ctx.fill();
       }
       for (let i = 0; i < points.length; i++) {
@@ -65,7 +66,9 @@ export function ParticleField() {
             ctx.beginPath();
             ctx.moveTo(points[i].x, points[i].y);
             ctx.lineTo(points[j].x, points[j].y);
-            ctx.strokeStyle = `rgba(130, 200, 230, ${0.16 * (1 - d2 / 18000)})`;
+            ctx.strokeStyle = light
+              ? `rgba(40, 110, 140, ${0.14 * (1 - d2 / 18000)})`
+              : `rgba(130, 200, 230, ${0.16 * (1 - d2 / 18000)})`;
             ctx.lineWidth = 0.7;
             ctx.stroke();
           }

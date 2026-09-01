@@ -136,7 +136,7 @@ export const projects: Project[] = [
       { label: "CV folds", value: "5" },
     ],
     tech: ["Python", "Pandas", "NumPy", "Scikit-Learn", "XGBoost", "FastAPI", "Matplotlib", "Seaborn"],
-    repo: "https://github.com/GouravThakur-in",
+    repo: "https://github.com/GouravThakur-in/End-to-End-Airbnb-Price-Prediction",
   accent: "var(--accent-cyan)",
   },
 ];
@@ -210,7 +210,7 @@ export const skinDiseaseProject = {
     "Matplotlib",
   ],
   kaggle: "https://www.kaggle.com/",
-  repo: "https://github.com/GouravThakur-in",
+  repo: "https://github.com/GouravThakur-in/skin-disease-classification",
 };
 
 export const education = [
