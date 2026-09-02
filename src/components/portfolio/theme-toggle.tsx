@@ -21,6 +21,17 @@ export function ThemeToggle() {
       stored ?? (document.documentElement.classList.contains("light") ? "light" : "dark");
     setTheme(initial);
     applyTheme(initial);
+
+    // Follow system theme changes only when the user has no saved preference.
+    const mql = window.matchMedia("(prefers-color-scheme: light)");
+    const onSystemChange = (e: MediaQueryListEvent) => {
+      if (localStorage.getItem(STORAGE_KEY)) return;
+      const next: Theme = e.matches ? "light" : "dark";
+      setTheme(next);
+      applyTheme(next);
+    };
+    mql.addEventListener("change", onSystemChange);
+    return () => mql.removeEventListener("change", onSystemChange);
   }, []);
 
   const toggle = () => {
@@ -54,5 +65,5 @@ export function ThemeToggle() {
   );
 }
 
-/** Inline script that applies the stored theme before paint (no flicker). */
-export const themeInitScript = `(function(){try{var t=localStorage.getItem("${STORAGE_KEY}")||"dark";var r=document.documentElement;r.classList.toggle("light",t==="light");r.classList.toggle("dark",t==="dark");r.style.colorScheme=t;}catch(e){}})();`;
+/** Inline script that applies the saved or system theme before paint (no flicker). */
+export const themeInitScript = `(function(){try{var t=localStorage.getItem("${STORAGE_KEY}");if(t!=="light"&&t!=="dark"){t=window.matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";}var r=document.documentElement;r.classList.toggle("light",t==="light");r.classList.toggle("dark",t==="dark");r.style.colorScheme=t;}catch(e){}})();`;
