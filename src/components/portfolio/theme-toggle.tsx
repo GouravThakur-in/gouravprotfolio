@@ -21,6 +21,17 @@ export function ThemeToggle() {
       stored ?? (document.documentElement.classList.contains("light") ? "light" : "dark");
     setTheme(initial);
     applyTheme(initial);
+
+    // Follow system theme changes only when the user has no saved preference.
+    const mql = window.matchMedia("(prefers-color-scheme: light)");
+    const onSystemChange = (e: MediaQueryListEvent) => {
+      if (localStorage.getItem(STORAGE_KEY)) return;
+      const next: Theme = e.matches ? "light" : "dark";
+      setTheme(next);
+      applyTheme(next);
+    };
+    mql.addEventListener("change", onSystemChange);
+    return () => mql.removeEventListener("change", onSystemChange);
   }, []);
 
   const toggle = () => {
