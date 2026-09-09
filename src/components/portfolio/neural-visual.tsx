@@ -49,7 +49,7 @@ export function NeuralVisual() {
         y: Math.random() * height,
         vx: (Math.random() - 0.5) * 0.16,
         vy: (Math.random() - 0.5) * 0.16,
-        r: Math.random() * 1.6 + 1,
+        r: Math.random() * 1.8 + 1.3,
       }));
     };
 
@@ -76,13 +76,13 @@ export function NeuralVisual() {
           const dy = a.y - b.y;
           const d = Math.hypot(dx, dy);
           if (d > linkDist) continue;
-          const alpha = (1 - d / linkDist) * 0.3;
+          const alpha = (1 - d / linkDist) * 0.45;
           const grad = ctx.createLinearGradient(a.x, a.y, b.x, b.y);
           grad.addColorStop(0, cyan);
           grad.addColorStop(1, violet);
           ctx.globalAlpha = alpha;
           ctx.strokeStyle = grad;
-          ctx.lineWidth = 0.7;
+          ctx.lineWidth = 0.9;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
           ctx.lineTo(b.x, b.y);
