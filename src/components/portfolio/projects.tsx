@@ -6,8 +6,8 @@ import type { Project } from "@/data/portfolio";
 import { SectionHeading } from "./section-heading";
 import { Reveal } from "./motion-primitives";
 import airbnbImage from "@/assets/project-airbnb.jpg";
-import emotionImage from "@/assets/project-emotionai.png.asset.json";
-import skinDiseaseAsset from "@/assets/skin-disease.webp.asset.json";
+import emotionImage from "@/assets/project-emotionai-cover.jpg";
+import skinDiseaseImage from "@/assets/skin-disease.webp";
 
 function DetailedProjectCard({
   project,
@@ -181,7 +181,7 @@ export function Projects() {
       <Reveal>
         <DetailedProjectCard
           project={emotionAIProject}
-          image={emotionImage.url}
+          image={emotionImage}
           imageAlt="Collage of facial expressions showing the six emotions classified by EmotionAI"
           index={0}
           variant="thumbnail"
@@ -196,7 +196,9 @@ export function Projects() {
         >
           <div className="relative">
             <img
-              src={skinDiseaseAsset.url}
+              src={skinDiseaseImage}
+              width={1241}
+              height={445}
               alt="Illustration of a person with a skin condition on their arms, used for the skin disease classification project"
               loading="lazy"
               className="h-56 w-full object-cover object-left transition-transform duration-[1200ms] group-hover:scale-105 sm:h-72 lg:h-80"

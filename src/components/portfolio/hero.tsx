@@ -5,7 +5,7 @@ import { FiGithub, FiInstagram, FiLinkedin, FiMail } from "react-icons/fi";
 import { profile } from "@/data/portfolio";
 import { ParticleField, Blobs } from "./backdrop";
 import { MagneticButton } from "./magnetic-button";
-import profilePhoto from "@/assets/profile.jpg";
+import { NeuralVisual } from "./neural-visual";
 
 function Typewriter({ words }: { words: string[] }) {
   const [index, setIndex] = useState(0);
@@ -158,7 +158,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <ProfilePhoto />
+        <NeuralPanel />
       </div>
 
       <motion.a
@@ -175,84 +175,58 @@ export function Hero() {
   );
 }
 
-function ProfilePhoto() {
+function NeuralPanel() {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
+      initial={{ opacity: 0, scale: 0.96 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-      className="relative mx-auto w-full max-w-[20rem] sm:max-w-[24rem] lg:max-w-none"
+      transition={{ duration: 1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
+      className="relative mx-auto w-full max-w-md lg:max-w-none"
+      aria-hidden="true"
     >
-      <motion.div
-        animate={{ y: [0, -14, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        className="relative aspect-square"
-      >
-        {/* glow */}
+      <div
+        className="pointer-events-none absolute -inset-10 rounded-full opacity-25 blur-3xl"
+        style={{ background: "var(--gradient-aurora)" }}
+      />
+
+      <div className="glass relative aspect-square overflow-hidden rounded-[2.5rem] sm:aspect-[4/3] lg:aspect-square">
         <div
-          className="absolute -inset-8 rounded-full opacity-50 blur-3xl"
-          style={{ background: "var(--gradient-aurora)" }}
-        />
-
-        {/* premium soft shadow */}
-        <div className="absolute inset-x-6 bottom-2 h-10 rounded-full bg-black/60 blur-2xl" />
-
-        {/* animated blue/violet ring */}
-        <motion.div
-          animate={{ rotate: -360 }}
-          transition={{ duration: 26, repeat: Infinity, ease: "linear" }}
-          className="absolute -inset-1 rounded-full opacity-70 blur-[2px]"
+          className="pointer-events-none absolute inset-0 opacity-60"
           style={{
             background:
-              "conic-gradient(from 0deg, transparent 0%, var(--accent-cyan) 22%, var(--accent-violet) 48%, transparent 70%)",
-            maskImage: "radial-gradient(circle, transparent 62%, black 66%)",
-            WebkitMaskImage: "radial-gradient(circle, transparent 62%, black 66%)",
+              "radial-gradient(120% 120% at 20% 15%, color-mix(in oklab, var(--accent-violet) 22%, transparent), transparent 62%)",
           }}
         />
-
-        {/* rotating gradient ring */}
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 rounded-full p-[2px]"
-          style={{ background: "var(--gradient-aurora)" }}
-        >
-          <div className="size-full rounded-full bg-background/80" />
-        </motion.div>
-
-        {/* glass frame + image */}
-        <div className="glass group absolute inset-[10px] overflow-hidden rounded-full border border-white/10 shadow-2xl">
-          <img
-            src={profilePhoto}
-            alt="Portrait of Gourav Thakur, AI & Machine Learning Engineer"
-            width={900}
-            height={900}
-            loading="eager"
-            fetchPriority="high"
-            decoding="async"
-            sizes="(max-width: 640px) 20rem, (max-width: 1024px) 24rem, 28rem"
-            className="size-full scale-100 object-cover object-[52%_32%] transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-          />
-
-          <div className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/15" />
+        <div className="absolute inset-0 [mask-image:radial-gradient(ellipse_at_center,black,transparent_82%)]">
+          <NeuralVisual />
         </div>
+        <div className="grid-noise pointer-events-none absolute inset-0 opacity-40" />
 
+        <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-center gap-2 p-5 sm:p-6">
+          {["Neural Networks", "Deep Learning", "Data Science"].map((t) => (
+            <span
+              key={t}
+              className="glass rounded-full px-3 py-1.5 font-mono text-[0.62rem] tracking-wide text-muted-foreground uppercase"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
 
-        {/* floating chips */}
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="glass absolute -left-2 top-8 rounded-full px-3 py-1.5 font-mono text-[0.68rem] text-muted-foreground sm:-left-6"
-        >
-          Python · FastAPI
-        </motion.div>
-        <motion.div
-          animate={{ y: [0, -12, 0] }}
-          transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
-          className="glass absolute -right-2 bottom-10 rounded-full px-3 py-1.5 font-mono text-[0.68rem] text-muted-foreground sm:-right-6"
-        >
-          TensorFlow · ML
-        </motion.div>
+      <motion.div
+        animate={{ y: [0, 10, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        className="glass absolute -left-2 top-6 rounded-full px-3 py-1.5 font-mono text-[0.68rem] text-muted-foreground sm:-left-5"
+      >
+        Python · FastAPI
+      </motion.div>
+      <motion.div
+        animate={{ y: [0, -12, 0] }}
+        transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }}
+        className="glass absolute -right-2 bottom-24 rounded-full px-3 py-1.5 font-mono text-[0.68rem] text-muted-foreground sm:-right-5"
+      >
+        TensorFlow · ML
       </motion.div>
     </motion.div>
   );
