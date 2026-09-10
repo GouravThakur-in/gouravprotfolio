@@ -18,12 +18,13 @@ const lines: Line[] = [
   { indent: 1, parts: [{ t: "],", c: P }] },
   { indent: 0, parts: [{ t: "" }] },
   { indent: 1, parts: [{ t: "projects: [", c: P }] },
-  { indent: 2, parts: [{ t: '"EmotionAI"', c: S }, { t: "," }] },
+  { indent: 2, parts: [{ t: '"EmotiQ"', c: S }, { t: "," }] },
   { indent: 2, parts: [{ t: '"Skin Disease Classification"', c: S }, { t: "," }] },
   { indent: 2, parts: [{ t: '"Airbnb Price Prediction"', c: S }] },
   { indent: 1, parts: [{ t: "],", c: P }] },
   { indent: 0, parts: [{ t: "" }] },
-  { indent: 1, parts: [{ t: "focus: " }, { t: '"End-to-end AI systems"', c: S }] },
+  { indent: 1, parts: [{ t: "available: " }, { t: "true", c: N }, { t: "," }] },
+  { indent: 1, parts: [{ t: "// let's build something great ✦", c: P }] },
   { indent: 0, parts: [{ t: "};", c: P }] },
 ];
 
