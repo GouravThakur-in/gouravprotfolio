@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { ArrowDown, Download, Mail, Sparkles } from "lucide-react";
+import { ArrowDown, Mail, Sparkles } from "lucide-react";
 import { FiGithub, FiInstagram, FiLinkedin, FiMail } from "react-icons/fi";
 import { profile } from "@/data/portfolio";
 import { Blobs } from "./backdrop";

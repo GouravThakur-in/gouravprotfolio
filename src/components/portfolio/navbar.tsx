@@ -82,11 +82,12 @@ export function Navbar() {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <a
-            href="#contact"
-            className="hidden rounded-full px-4 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 sm:inline-flex"
+            href={profile.resumeUrl}
+            download="Gourav_Thakur_Resume.pdf"
+            className="hidden items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 sm:inline-flex"
             style={{ background: "var(--gradient-aurora)" }}
           >
-            Let's talk
+            <Download className="size-4" /> Resume
           </a>
           <button
             onClick={() => setOpen((v) => !v)}
