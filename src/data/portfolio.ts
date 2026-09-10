@@ -6,7 +6,7 @@ export const profile = {
   name: "Gourav Thakur",
   role: "AI & Machine Learning Engineer",
   greeting: "Hi, I'm",
-  roles: ["AI/ML Engineer", "Data Scientist", "Data Analyst"],
+  roles: ["Data Scientist", "AI/ML Engineer", "Python Developer", "Machine Learning Engineer"],
   summary:
     "Motivated MCA graduate with hands-on experience in Python, Machine Learning, and AI application development. Skilled in FastAPI, Scikit-Learn, TensorFlow, Pandas, and NumPy. Experienced in developing AI-powered applications, machine learning pipelines, and backend APIs. Passionate about solving real-world problems through AI and continuously learning emerging technologies.",
   location: "Himachal Pradesh, India",

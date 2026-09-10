@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { ArrowDown, Download, Mail, Sparkles } from "lucide-react";
+import { ArrowDown, Mail, Sparkles } from "lucide-react";
 import { FiGithub, FiInstagram, FiLinkedin, FiMail } from "react-icons/fi";
 import { profile } from "@/data/portfolio";
 import { Blobs } from "./backdrop";
@@ -71,7 +71,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-3 text-[clamp(2.4rem,7vw,5.2rem)] leading-[0.95] font-semibold tracking-tight"
+            className="mt-3 text-[clamp(2.8rem,8vw,6rem)] leading-[0.92] font-bold tracking-[-0.03em]"
           >
             <span className="block">{profile.firstName}</span>
             <span className="text-aurora block">{profile.lastName}</span>
@@ -81,18 +81,22 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.26 }}
-            className="mt-6 text-lg text-muted-foreground sm:text-xl"
+            className="mt-5 text-[clamp(1.35rem,3.4vw,2.1rem)] font-semibold tracking-tight"
           >
-            {profile.role} — <Typewriter words={profile.roles} />
+            <span className="text-foreground/90">I&apos;m a </span>
+            <Typewriter words={profile.roles} />
           </motion.p>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.32 }}
-            className="mt-3 max-w-xl text-base text-foreground/80 sm:text-lg"
+            className="mt-6 max-w-xl text-base leading-relaxed text-foreground/80 sm:text-lg"
           >
-            Building intelligent, production-ready machine learning systems.
+            A passionate <span className="font-semibold text-cyan">AI &amp; Machine Learning</span>{" "}
+            engineer and <span className="font-semibold text-lime">Python developer</span>, building
+            intelligent, real-world applications with Machine Learning, Deep Learning, NLP and modern
+            AI technologies.
           </motion.p>
 
           <motion.p
@@ -101,8 +105,8 @@ export function Hero() {
             transition={{ duration: 0.7, delay: 0.38 }}
             className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground/85 sm:text-base"
           >
-            I design and build end-to-end ML and AI applications — from data pipelines and model
-            training to deep learning inference and FastAPI deployment.
+            I build end-to-end AI systems — from data preprocessing and model training to deployment
+            and production-ready APIs.
           </motion.p>
 
           <motion.div
@@ -114,23 +118,15 @@ export function Hero() {
             <MagneticButton
               as="a"
               href="#projects"
-              className="rounded-full px-5 py-3 text-sm font-semibold text-primary-foreground sm:px-6"
+              className="rounded-full px-6 py-3.5 text-sm font-semibold text-primary-foreground sm:px-7 sm:text-base"
               style={{ background: "var(--gradient-aurora)" }}
             >
-              View Projects
-            </MagneticButton>
-            <MagneticButton
-              as="a"
-              href={profile.resumeUrl}
-              download="Gourav_Thakur_Resume.pdf"
-              className="glass inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold sm:px-6"
-            >
-              <Download className="size-4" /> Download Resume
+              View My Work
             </MagneticButton>
             <MagneticButton
               as="a"
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border border-border px-5 py-3 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground sm:px-6"
+              className="glass inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-semibold sm:px-7 sm:text-base"
             >
               <Mail className="size-4" /> Contact Me
             </MagneticButton>
