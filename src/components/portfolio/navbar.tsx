@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { Download, Menu, X } from "lucide-react";
 import { navLinks, profile } from "@/data/portfolio";
 import { ThemeToggle } from "@/components/portfolio/theme-toggle";
 
