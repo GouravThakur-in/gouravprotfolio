@@ -86,9 +86,13 @@ export function Hero() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.24 }}
-            className="mt-6 text-lg text-muted-foreground sm:text-xl"
+            className="mt-6 w-full max-w-full text-[clamp(1rem,4.4vw,1.125rem)] text-muted-foreground sm:text-xl"
           >
-            {profile.role} — <Typewriter words={profile.roles} />
+            <span className="block sm:inline">{profile.role}</span>
+            <span className="hidden sm:inline"> — </span>
+            <span className="flex h-[1.7em] w-full max-w-full items-center overflow-hidden sm:inline sm:h-auto sm:w-auto">
+              <Typewriter words={profile.roles} />
+            </span>
           </motion.p>
 
           <motion.p
