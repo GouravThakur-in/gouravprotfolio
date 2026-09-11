@@ -31,7 +31,10 @@ function Typewriter({ words }: { words: string[] }) {
   }, [text, deleting, index, words]);
 
   return (
-    <span className="font-mono text-cyan" aria-live="polite">
+    <span
+      className="inline-flex max-w-full items-center overflow-hidden font-mono whitespace-nowrap text-cyan"
+      aria-live="polite"
+    >
       {text}
       <span className="animate-caret ml-0.5 inline-block h-[1em] w-[2px] translate-y-[0.12em] bg-cyan" />
     </span>
