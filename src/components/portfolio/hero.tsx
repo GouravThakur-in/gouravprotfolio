@@ -98,12 +98,12 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.45 }}
-          className="mt-12 flex flex-wrap items-center justify-center gap-3"
+          className="mt-12 flex w-full max-w-sm flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center sm:justify-center"
         >
           <MagneticButton
             as="a"
             href="#projects"
-            className="rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground"
+            className="w-full rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground sm:w-auto"
             style={{ background: "var(--gradient-aurora)" }}
           >
             View Projects
@@ -112,14 +112,14 @@ export function Hero() {
             as="a"
             href={profile.resumeUrl}
             download="Gourav_Thakur_Resume.pdf"
-            className="glass inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
+            className="glass inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold sm:w-auto"
           >
             <Download className="size-4" /> Download Resume
           </MagneticButton>
           <MagneticButton
             as="a"
             href="#contact"
-            className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground sm:w-auto"
           >
             <Mail className="size-4" /> Contact Me
           </MagneticButton>
