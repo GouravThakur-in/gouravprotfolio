@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { ArrowDown, Download, Mail, Sparkles } from "lucide-react";
+import { ArrowDown, Download, Mail } from "lucide-react";
 import { FiGithub, FiInstagram, FiLinkedin, FiMail } from "react-icons/fi";
+import portrait from "@/assets/gourav-editorial-portrait.png.asset.json";
 import { profile } from "@/data/portfolio";
-import { ParticleField, Blobs } from "./backdrop";
 import { MagneticButton } from "./magnetic-button";
-import { CodeCard } from "./code-card";
 
 function Typewriter({ words }: { words: string[] }) {
   const [index, setIndex] = useState(0);
@@ -18,168 +17,158 @@ function Typewriter({ words }: { words: string[] }) {
     const cleared = deleting && text === "";
     const delay = done ? 1600 : cleared ? 220 : deleting ? 38 : 78;
 
-    const t = setTimeout(() => {
+    const timer = setTimeout(() => {
       if (done) return setDeleting(true);
       if (cleared) {
         setDeleting(false);
-        setIndex((i) => i + 1);
+        setIndex((current) => current + 1);
         return;
       }
       setText(deleting ? word.slice(0, text.length - 1) : word.slice(0, text.length + 1));
     }, delay);
-    return () => clearTimeout(t);
+    return () => clearTimeout(timer);
   }, [text, deleting, index, words]);
 
   return (
     <span
-      className="inline-flex max-w-full items-center overflow-hidden font-mono whitespace-nowrap text-cyan"
+      className="inline-flex h-6 max-w-full items-center overflow-hidden font-mono text-xs text-hero-muted sm:text-sm"
       aria-live="polite"
     >
       {text}
-      <span className="animate-caret ml-0.5 inline-block h-[1em] w-[2px] translate-y-[0.12em] bg-cyan" />
+      <span className="ml-1 inline-block h-4 w-px animate-caret bg-hero-muted" />
     </span>
   );
 }
 
+const socials = [
+  { href: profile.github, Icon: FiGithub, label: "GitHub", instagram: false },
+  { href: profile.linkedin, Icon: FiLinkedin, label: "LinkedIn", instagram: false },
+  { href: `mailto:${profile.email}`, Icon: FiMail, label: "Email", instagram: false },
+  { href: profile.instagram, Icon: FiInstagram, label: "Instagram", instagram: true },
+];
+
 export function Hero() {
   return (
-    <section id="hero" className="relative flex min-h-screen items-center overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 opacity-40">
-        <Blobs />
-        <ParticleField />
+    <section
+      id="hero"
+      className="relative isolate flex min-h-[54rem] items-start justify-center overflow-hidden bg-hero-background text-hero-foreground"
+    >
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <img
+          src={portrait.url}
+          alt=""
+          fetchPriority="high"
+          className="absolute inset-x-0 top-24 mx-auto h-[35rem] w-full max-w-[48rem] object-contain object-top opacity-90 [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)] sm:top-20 sm:h-[47rem] sm:max-w-[54rem]"
+        />
+        <div className="absolute inset-x-0 bottom-0 h-[58%] bg-gradient-to-b from-transparent via-hero-background/75 to-hero-background" />
+        <div className="absolute inset-x-0 top-0 h-48 bg-gradient-to-b from-hero-background/60 to-transparent" />
       </div>
-      <div className="grid-noise pointer-events-none absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
 
-      <div className="section-shell relative grid w-full grid-cols-1 items-center gap-12 pt-32 pb-24 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.95fr)] lg:gap-16">
-        {/* Left — introduction */}
-        <div className="flex flex-col items-start text-left">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs text-muted-foreground"
-          >
-            <Sparkles className="size-3.5 text-cyan" />
-            Open to AI/ML internships & full-time roles
-          </motion.div>
+      <div className="pointer-events-none absolute inset-x-0 top-28 z-10 mx-auto flex w-full max-w-7xl items-center justify-between px-6 sm:top-32 sm:px-10 lg:px-16">
+        <span className="font-mono text-[9px] uppercase text-hero-muted sm:text-[10px]">
+          Independent mind / AI &amp; machine learning
+        </span>
+        <span className="font-mono text-[9px] uppercase text-hero-muted sm:text-[10px]">
+          {profile.location}
+        </span>
+      </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.08 }}
-            className="mt-8 font-mono text-xs tracking-[0.3em] text-muted-foreground uppercase sm:text-sm"
-          >
-            {profile.greeting}
-          </motion.p>
+      <div className="relative z-10 flex w-full flex-col items-center px-5 pb-24 pt-[24rem] text-center sm:px-8 sm:pt-[28rem]">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.08 }}
+          className="font-mono text-[10px] uppercase text-hero-muted sm:text-xs"
+        >
+          {profile.greeting}
+        </motion.p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.14, ease: [0.22, 1, 0.36, 1] }}
-            className="mt-3 text-[clamp(2.5rem,7vw,5.2rem)] leading-[0.95] font-semibold tracking-tight"
-          >
-            <span className="block">{profile.firstName}</span>
-            <span className="text-aurora block">{profile.lastName}</span>
-          </motion.h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 18 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.85, delay: 0.16 }}
+          className="relative z-10 mt-1 whitespace-nowrap font-editorial text-[3.75rem] leading-[0.88] font-semibold text-hero-foreground drop-shadow-[0_2px_18px_var(--hero-background)] sm:text-7xl md:text-8xl xl:text-9xl"
+        >
+          {profile.name}
+        </motion.h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.24 }}
-            className="mt-6 w-full max-w-full text-[clamp(1rem,4.4vw,1.125rem)] text-muted-foreground sm:text-xl"
-          >
-            <span className="block sm:inline">{profile.role}</span>
-            <span className="hidden sm:inline"> — </span>
-            <span className="flex h-[1.7em] w-full max-w-full items-center overflow-hidden sm:inline sm:h-auto sm:w-auto">
-              <Typewriter words={profile.roles} />
-            </span>
-          </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.27 }}
+          className="mt-5 flex flex-col items-center gap-1"
+        >
+          <p className="text-sm font-medium text-hero-foreground sm:text-base">
+            {profile.role}
+          </p>
+          <Typewriter words={profile.roles} />
+        </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.3 }}
-            className="mt-3 text-base font-medium text-foreground/90 sm:text-lg"
-          >
-            Building intelligent, production-ready machine learning systems.
-          </motion.p>
+        <motion.p
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.34 }}
+          className="mt-4 max-w-2xl text-sm leading-relaxed text-hero-muted sm:text-base"
+        >
+          I design and build end-to-end ML and AI applications — from data pipelines and model
+          training to deep learning inference and FastAPI deployment.
+        </motion.p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.36 }}
-            className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground/80 sm:text-base"
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.65, delay: 0.42 }}
+          className="mt-7 flex w-full max-w-3xl flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+        >
+          <MagneticButton
+            as="a"
+            href="#projects"
+            className="w-full rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground sm:w-auto"
+            style={{ background: "var(--gradient-aurora)" }}
           >
-            I design and build end-to-end ML and AI applications — from data pipelines and model
-            training to deep learning inference and FastAPI deployment.
-          </motion.p>
+            View My Work
+          </MagneticButton>
+          <MagneticButton
+            as="a"
+            href={profile.resumeUrl}
+            download="Gourav_Thakur_Resume.pdf"
+            className="glass inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold sm:w-auto"
+          >
+            <Download className="size-4" /> Download Resume
+          </MagneticButton>
+          <MagneticButton
+            as="a"
+            href="#contact"
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground sm:w-auto"
+          >
+            <Mail className="size-4" /> Contact Me
+          </MagneticButton>
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.45 }}
-            className="mt-10 flex w-full max-w-sm flex-col items-stretch gap-3 sm:max-w-none sm:flex-row sm:flex-wrap sm:items-center"
-          >
-            <MagneticButton
-              as="a"
-              href="#projects"
-              className="w-full rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground sm:w-auto"
-              style={{ background: "var(--gradient-aurora)" }}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.65, delay: 0.54 }}
+          className="mt-8 flex flex-wrap items-center justify-center gap-3"
+        >
+          {socials.map(({ href, Icon, label, instagram }) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={label}
+              className={`glass grid size-10 place-items-center rounded-full text-muted-foreground transition-all hover:-translate-y-1 ${
+                instagram ? "hover-instagram" : "hover:text-cyan"
+              }`}
             >
-              View My Work
-            </MagneticButton>
-            <MagneticButton
-              as="a"
-              href={profile.resumeUrl}
-              download="Gourav_Thakur_Resume.pdf"
-              className="glass inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold sm:w-auto"
-            >
-              <Download className="size-4" /> Download Resume
-            </MagneticButton>
-            <MagneticButton
-              as="a"
-              href="#contact"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-border px-6 py-3 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground sm:w-auto"
-            >
-              <Mail className="size-4" /> Contact Me
-            </MagneticButton>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.6 }}
-            className="mt-10 flex flex-wrap items-center gap-4"
-          >
-            {[
-              { href: profile.github, Icon: FiGithub, label: "GitHub", instagram: false },
-              { href: profile.linkedin, Icon: FiLinkedin, label: "LinkedIn", instagram: false },
-              { href: `mailto:${profile.email}`, Icon: FiMail, label: "Email", instagram: false },
-              { href: profile.instagram, Icon: FiInstagram, label: "Instagram", instagram: true },
-            ].map(({ href, Icon, label, instagram }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className={`glass grid size-11 place-items-center rounded-full text-muted-foreground transition-all hover:-translate-y-1 ${
-                  instagram ? "hover-instagram" : "hover:text-cyan"
-                }`}
-              >
-                <Icon className="size-4.5" />
-              </a>
-            ))}
-
-            <span className="hidden h-8 w-px bg-border sm:block" />
-            <span className="font-mono text-xs text-muted-foreground">{profile.location}</span>
-          </motion.div>
-        </div>
-
-        {/* Right — code editor visual */}
-        <div className="w-full min-w-0">
-          <CodeCard />
-        </div>
+              <Icon className="size-4" />
+            </a>
+          ))}
+          <span className="ml-1 hidden font-mono text-[10px] uppercase text-hero-muted sm:inline">
+            {profile.location}
+          </span>
+        </motion.div>
       </div>
 
       <motion.a
@@ -188,7 +177,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ opacity: { delay: 1 } }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 text-muted-foreground"
+        className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-hero-muted"
       >
         <ArrowDown className="size-5" />
       </motion.a>
