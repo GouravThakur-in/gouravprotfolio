@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { ArrowDown, Download, Mail } from "lucide-react";
+import { ArrowDown, Mail } from "lucide-react";
 import { FiGithub, FiInstagram, FiLinkedin, FiMail } from "react-icons/fi";
 import portrait from "@/assets/gourav-editorial-portrait.png.asset.json";
 import { profile } from "@/data/portfolio";
@@ -127,14 +127,6 @@ export function Hero() {
             style={{ background: "var(--gradient-aurora)" }}
           >
             View My Work
-          </MagneticButton>
-          <MagneticButton
-            as="a"
-            href={profile.resumeUrl}
-            download="Gourav_Thakur_Resume.pdf"
-            className="glass inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold sm:w-auto"
-          >
-            <Download className="size-4" /> Download Resume
           </MagneticButton>
           <MagneticButton
             as="a"
